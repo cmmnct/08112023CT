@@ -1,0 +1,8 @@
+<div class="patch" [style.background-color]="myPatch.rgba">
+    {{myPatch.r}}<br>
+    {{myPatch.g}}<br>
+    {{myPatch.b}}<br>
+    {{myPatch.a}}<br>
+    <input type="text" #index size="1">
+    <a (click)="randomColor(index.value)">{{myPatch.name}}</a><br>
+</div>
