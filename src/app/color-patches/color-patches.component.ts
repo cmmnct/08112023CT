@@ -10,11 +10,22 @@ export class ColorpatchesComponent {
 
   myPatch:Colorpatch = new Colorpatch(23,127,222,0.8,'random')
 
-  randomColor(decimals:string){
-   this.myPatch.r = Math.floor(Math.random() * 256);
-   this.myPatch.g = Math.floor(Math.random() * 256);
-   this.myPatch.b = Math.floor(Math.random() * 256);
-   this.myPatch.a = Number(Math.random().toFixed(Number(decimals)));
+  patchArray:Colorpatch[] =[
+    new Colorpatch(0,0,0,1,'black'),
+    new Colorpatch(255,255,255,1,'white'),
+    new Colorpatch(255,0,0,1,'red'),
+    new Colorpatch(0,255,0,1,'green'),
+    new Colorpatch(0,0,255,1,'blue'),
+    new Colorpatch(255,255,0,1,'yellow'),
+    new Colorpatch(255,0,255,1,'magenta'),
+    new Colorpatch(0,255,255,1,'cyan')
+  ];
+
+  randomColor(patch:Colorpatch, decimals:string){
+   patch.r = Math.floor(Math.random() * 256);
+   patch.g = Math.floor(Math.random() * 256);
+   patch.b = Math.floor(Math.random() * 256);
+   patch.a = Number(Math.random().toFixed(Number(decimals)));
   }
 
 }

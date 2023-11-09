@@ -1,0 +1,13 @@
+<p>memory-game works!</p>
+
+<div>
+<div *ngIf="cardArray" class="field">
+    <div *ngFor="let card of cardArray" [style.backgroundImage]="'url(assets/img/'+card.card1+'.jpg)'">
+        <div >
+            {{ card.card1}}
+        </div>
+
+    </div>
+
+</div>
+</div>

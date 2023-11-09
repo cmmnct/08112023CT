@@ -31,15 +31,23 @@ export class Colorpatch {
     }
 
     set r(r: number) {
+        if ( r < 0 ) r = 0
+        if (r > 255) r = 255
         this._r = r
     }
     set g(g: number) {
+        if ( g < 0 ) g = 0
+        if (g > 255) g = 255
         this._g = g
     }
     set b(b: number) {
+        if ( b < 0 ) b = 0
+        if (b > 255) b = 255
         this._b = b
     }
     set a(a: number) {
+        if (a > 1 && a < 11) a = a / 10
+        if (a > 11 && a < 101) a = a /100
         this._a = a
     }
     set name(name: string) {

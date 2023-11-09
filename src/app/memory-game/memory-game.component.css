@@ -1,0 +1,12 @@
+.field {
+  
+display: flex;
+flex-wrap: wrap;
+}
+
+.field > div {
+    width: 33%;
+    aspect-ratio: 1/1;
+    background-size: cover;
+}
+
