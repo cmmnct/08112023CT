@@ -1,31 +1,41 @@
-import { Component } from '@angular/core';
-import { Colorpatch } from '../../models/colorpatch'
+import { Component, ChangeDetectionStrategy, inject, OnDestroy } from '@angular/core';
+import { ColorpatchModel } from '../../models/colorpatchModel'
+import { PatchesService } from '../services/patches.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ct-color-patches',
   templateUrl: './color-patches.component.html',
-  styleUrls: ['./color-patches.component.css']
+  styleUrls: ['./color-patches.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ColorpatchesComponent {
 
-  myPatch:Colorpatch = new Colorpatch(23,127,222,0.8,'random')
+patchesService = inject(PatchesService);
 
-  patchArray:Colorpatch[] =[
-    new Colorpatch(0,0,0,1,'black'),
-    new Colorpatch(255,255,255,1,'white'),
-    new Colorpatch(255,0,0,1,'red'),
-    new Colorpatch(0,255,0,1,'green'),
-    new Colorpatch(0,0,255,1,'blue'),
-    new Colorpatch(255,255,0,1,'yellow'),
-    new Colorpatch(255,0,255,1,'magenta'),
-    new Colorpatch(0,255,255,1,'cyan')
-  ];
+  //constructor(public patchesService:PatchesService){
+ // }
 
-  randomColor(patch:Colorpatch, decimals:string){
-   patch.r = Math.floor(Math.random() * 256);
-   patch.g = Math.floor(Math.random() * 256);
-   patch.b = Math.floor(Math.random() * 256);
-   patch.a = Number(Math.random().toFixed(Number(decimals)));
+  defaultPatch:ColorpatchModel = new ColorpatchModel(23,127,222,0.8,'')
+
+  patchArray:ColorpatchModel[] = this.patchesService.getPatches();
+
+  patchArray$:Observable<ColorpatchModel[]> = this.patchesService.getPatches$();
+
+  onDeletePatch(cp:ColorpatchModel){
+    this.patchArray.splice(this.patchArray.indexOf(cp), 1)
+  }
+  onEditPatch(cp:ColorpatchModel){
+    this.defaultPatch = cp;
+  }
+
+  onAddPatch(){
+    this.patchArray.push(this.defaultPatch);
+    this.defaultPatch = new ColorpatchModel(0,0,0,1,'')
+  }
+
+  ngOnDestroy(){
+
   }
 
 }

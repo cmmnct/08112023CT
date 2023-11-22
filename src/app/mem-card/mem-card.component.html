@@ -1,0 +1,8 @@
+<div class="card" >
+    <div class="background" (click)="onClickCard()">
+        <div *ngIf="uncovered" [style.backgroundImage]="'url(assets/img/'+cardInput.card1+'.jpg)'">
+        {{ cardInput.card1 }}
+    </div>
+    </div>
+    
+</div>

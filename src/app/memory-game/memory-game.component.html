@@ -1,13 +1,10 @@
 <p>memory-game works!</p>
 
-<div>
-<div *ngIf="cardArray" class="field">
-    <div *ngFor="let card of cardArray" [style.backgroundImage]="'url(assets/img/'+card.card1+'.jpg)'">
-        <div >
-            {{ card.card1}}
-        </div>
-
-    </div>
+<div class="game">
+<div *ngIf="cardArray$" class="field">
+    <ct-mem-card *ngFor="let card of cardArray$ | async" 
+    [cardInput]="card" 
+    (turn)="onClickMemoryCard($event)"></ct-mem-card>
 
 </div>
 </div>

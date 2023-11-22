@@ -1,0 +1,7 @@
+.card div {
+    aspect-ratio: 1/1;
+    background-size: cover;
+}
+.background {
+    background-color: darkslategrey;
+}

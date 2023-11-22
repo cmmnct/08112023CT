@@ -1,4 +1,4 @@
-export class Colorpatch {
+export class ColorpatchModel {
     constructor(
         private _r: number,
         private _g: number,

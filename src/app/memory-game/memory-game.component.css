@@ -1,12 +1,24 @@
 .field {
-  
 display: flex;
 flex-wrap: wrap;
 }
 
 .field > div {
-    width: 33%;
+    box-sizing: border-box;
+    width: calc(25% - 2vw);
+    margin: 1vw;
     aspect-ratio: 1/1;
     background-size: cover;
 }
 
+.game {
+    max-width: 900px;
+    margin: auto;
+    background-color: cadetblue;
+}
+
+ct-mem-card {
+    width: calc(25% - 2vw);
+    margin: 1vw;
+    aspect-ratio: 1/1;
+}

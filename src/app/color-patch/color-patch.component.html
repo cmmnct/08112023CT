@@ -1,0 +1,13 @@
+<div>
+    <div class="patch" [style.background-color]="patchInput.rgba">
+        <button class="btn-delete" (click)="onClickDelete()">X</button>
+        <button class="btn-edit" (click)="onClickEdit()">e</button>
+        {{patchInput.r}}<br>
+        {{patchInput.g}}<br>
+        {{patchInput.b}}<br>
+        {{patchInput.a}}<br>
+        <input type="text" #index size="1">
+        <a (click)="randomColor(patchInput, index.value)">{{patchInput.name}}</a><br>
+        
+    </div>
+</div>
