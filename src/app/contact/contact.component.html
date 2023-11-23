@@ -1,0 +1,22 @@
+<div>
+    <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+        <label for="subject">Onderwerp: </label><input required type="text" name="subject"
+            [(ngModel)]="contact.subject" #subject="ngModel" ><br>
+            <div [hidden]="subject.valid || subject.pristine" class="alert alert-danger">
+                Email is required
+            </div>
+        <label for="message">|Bericht: </label><textarea required name="message" [(ngModel)]="contact.message" cols="30"
+            rows="10"></textarea><br>
+        <label for="email">Mailadres: </label><input required email type="email" name="mail"
+            [(ngModel)]="contact.email"><br>
+        
+        <label for="date">Geboortedatum: </label><input required type="date" name="date"
+            [(ngModel)]="contact.dateOfBirth"><br>
+        <button type="submit" [disabled]="!contactForm.form.valid">Verstuur</button>
+    </form>
+</div>
+
+<div>
+    <input type="text" [formControl]="name">
+    <p>Value: {{ name.value }}</p>
+</div>

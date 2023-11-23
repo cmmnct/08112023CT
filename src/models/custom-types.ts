@@ -13,3 +13,9 @@ export type Card = {
     id:number
   }
   
+  export class ContactInfo {
+    subject:string = '';
+    message:string = '';
+    email:string = '';
+    dateOfBirth:Date = new Date();
+   }

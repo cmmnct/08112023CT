@@ -6,7 +6,13 @@
         <input type="range" [(ngModel)]="defaultPatch.b" max="255"> {{ defaultPatch.b}}<br>
         <input type="range" [(ngModel)]="defaultPatch.a" max="1" step="0.01"> {{ defaultPatch.a}}<br>
         <input type="text" [(ngModel)]="defaultPatch.name">
-        <button (click)="onAddPatch()" [disabled]="!defaultPatch.name">+</button>
+        <button *ngIf="!editState; else update" (click)="onAddPatch()" [disabled]="!defaultPatch.name">+</button>
+        <ng-template #update>
+          <button (click)="onUpdatePatch()">Update patch</button>  
+          <button (click)="onCancelUpdate()">Cancel</button>
+        </ng-template>
+        
+    
     </div>
 </div>
 

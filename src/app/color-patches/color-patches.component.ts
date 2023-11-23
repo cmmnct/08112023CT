@@ -18,6 +18,8 @@ export class ColorpatchesComponent implements OnInit {
   patchArray: ColorpatchModel[];
   defaultPatch: ColorpatchModel;
   patchArray$: BehaviorSubject<ColorpatchModel[]> = new BehaviorSubject([] as ColorpatchModel[]);
+  editState: Boolean = false;
+  previousColorState:ColorpatchModel = new ColorpatchModel(0,0,0,0,'');
 
   constructor() {
     this.patchArray = [];
@@ -31,27 +33,31 @@ export class ColorpatchesComponent implements OnInit {
     this.patchArray$ = this.patchesService.getPatches();
   }
 
-
-
-
-
-
   onDeletePatch(cp: ColorpatchModel) {
     this.patchesService.deletePatch(cp);
   }
 
   onEditPatch(cp: ColorpatchModel) {
     this.defaultPatch = cp;
+    this.previousColorState = new ColorpatchModel(cp.r,cp.g,cp.r,cp.a,cp.name);
+    this.editState = true;
   }
 
   onUpdatePatch() {
     this.patchesService.updatePatch(this.defaultPatch);
     this.defaultPatch = new ColorpatchModel(0, 0, 0, 1, '');
+    this.editState = false;
   }
 
   onAddPatch() {
     this.patchesService.addPatch(this.defaultPatch);
     this.defaultPatch = new ColorpatchModel(0, 0, 0, 1, '');
+  }
+  onCancelUpdate(){
+    this.editState = false;
+    this.defaultPatch = this.previousColorState;
+    this.defaultPatch = new ColorpatchModel(0, 0, 0, 1, '');
+    
   }
 
   ngOnDestroy() {

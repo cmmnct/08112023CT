@@ -36,16 +36,18 @@ export class PatchesService {
   deletePatch(cp:ColorpatchModel){
     this.patchArray.splice(this.patchArray.indexOf(cp), 1);
     this.patchArray$.next(this.patchArray);
+    // call naar api 
   }
 
   addPatch(cp:ColorpatchModel){
     this.patchArray.push(cp);
+    this.patchArray$.next(this.patchArray);
   }
 
   updatePatch(cp:ColorpatchModel){
     this.patchArray[this.patchArray.indexOf(cp)] = cp;
+    this.patchArray$.next(this.patchArray);
   }
-
 }
 
 

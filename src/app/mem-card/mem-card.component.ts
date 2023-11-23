@@ -14,6 +14,7 @@ export class MemCardComponent {
 
   onClickCard(){
     this.turn.emit(this.cardInput);
+    
     this.uncovered = !this.uncovered;
   }
 
